@@ -1,0 +1,19 @@
+services:
+  app:
+    build: .
+    container_name: profile-app
+
+    ports:
+      - "5174:5174"
+
+    volumes:
+      - .:/app
+      - /app/node_modules
+
+    command: npm run dev -- --host 0.0.0.0
+
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "http://localhost:5174"]
+      interval: 5s
+      timeout: 3s
+      retries: 20

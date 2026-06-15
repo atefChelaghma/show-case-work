@@ -1,0 +1,4 @@
+npx --no-install lint-staged
+npm run test:run
+npm run lint
+
