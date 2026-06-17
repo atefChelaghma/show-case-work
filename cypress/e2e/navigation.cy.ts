@@ -1,17 +1,21 @@
 describe('profile project navigation', () => {
   it('moves between the home and about pages', () => {
-    cy.visit('/')
+    cy.visit('/');
 
-    cy.contains('h1', /build each product area as its own feature/i).should('be.visible')
+    cy.contains('Conhecer nossa liderança')
+      .click();
 
-    cy.contains('a', /view example feature/i).click()
+    cy.url().should('include', '/about');
 
-    cy.location('pathname').should('eq', '/about')
-    cy.contains('h1', /about feature/i).should('be.visible')
+    cy.contains('About feature')
+      .should('be.visible');
 
-    cy.contains('a', /back home/i).click()
+    cy.contains('Back Home')
+      .click();
 
-    cy.location('pathname').should('eq', '/')
-    cy.contains('h1', /build each product area as its own feature/i).should('be.visible')
-  })
-})
+    cy.url().should('eq', Cypress.config('baseUrl') + '/');
+
+    cy.contains('Conheça nossa liderança')
+      .should('be.visible');
+  });
+});
