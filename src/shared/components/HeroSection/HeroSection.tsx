@@ -1,7 +1,15 @@
-import { Box, Container, Typography } from '@mui/material';
-
-import { styles } from './HeroSection.styles';
+import { Container } from '@mui/material';
 import { HeroSectionProps } from './HeroSection.types';
+import {
+    HeroRoot,
+    HeroLayout,
+    HeroContent,
+    HeroTitle,
+    HeroDescription,
+    HeroActions,
+    HeroImageWrapper,
+    HeroImage,
+} from './HeroSection.styles';
 
 export const HeroSection = ({
     title,
@@ -10,31 +18,22 @@ export const HeroSection = ({
     actions,
 }: HeroSectionProps) => {
     return (
-        <Box component="section" sx={styles.root}>
+        <HeroRoot>
             <Container maxWidth="xl">
-                <Box sx={styles.container}>
-                    <Box sx={styles.content}>
-                        <Typography component="h1" sx={styles.title}>
-                            {title}
-                        </Typography>
+                <HeroLayout>
+                    <HeroContent>
+                        <HeroTitle component="h1">{title}</HeroTitle>
 
-                        <Typography sx={styles.description}>
-                            {description}
-                        </Typography>
+                        <HeroDescription>{description}</HeroDescription>
 
-                        {actions && <Box sx={styles.actions}>{actions}</Box>}
-                    </Box>
+                        {actions && <HeroActions>{actions}</HeroActions>}
+                    </HeroContent>
 
-                    <Box sx={styles.imageWrapper}>
-                        <Box
-                            component="img"
-                            src={image.src}
-                            alt={image.alt}
-                            sx={styles.image}
-                        />
-                    </Box>
-                </Box>
+                    <HeroImageWrapper>
+                        <HeroImage src={image.src} alt={image.alt} />
+                    </HeroImageWrapper>
+                </HeroLayout>
             </Container>
-        </Box>
+        </HeroRoot>
     );
 };

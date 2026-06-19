@@ -1,110 +1,93 @@
-import { SxProps, Theme } from '@mui/material';
+import { styled, Box, Typography } from '@mui/material';
+import { TypographyProps } from '@mui/material/Typography';
 
-export const styles: Record<string, SxProps<Theme>> = {
-    root: {
-        width: '100%',
-        py: {
-            xs: 6,
-            md: 10,
-            lg: 14,
-        },
+export const HeroRoot = styled('section')(({ theme }) => ({
+    width: '100%',
+    paddingTop: theme.spacing(6),
+    paddingBottom: theme.spacing(6),
+
+    [theme.breakpoints.up('md')]: {
+        paddingTop: theme.spacing(10),
+        paddingBottom: theme.spacing(10),
     },
-
-    container: {
-        display: 'flex',
-
-        flexDirection: {
-            xs: 'column',
-            md: 'row',
-        },
-
-        alignItems: 'center',
-
-        justifyContent: 'space-between',
-
-        gap: {
-            xs: 5,
-            md: 8,
-            lg: 12,
-        },
+    [theme.breakpoints.up('lg')]: {
+        paddingTop: theme.spacing(14),
+        paddingBottom: theme.spacing(14),
     },
+}));
 
-    content: {
-        flex: 1,
+export const HeroLayout = styled(Box)(({ theme }) => ({
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: theme.spacing(5),
 
-        maxWidth: {
-            md: 560,
-        },
-
-        order: {
-            xs: 1,
-            md: 1,
-        },
+    [theme.breakpoints.up('md')]: {
+        flexDirection: 'row',
+        gap: theme.spacing(8),
     },
-
-    title: {
-        mb: 3,
-
-        fontWeight: 600,
-
-        lineHeight: 1.1,
-
-        fontSize: {
-            xs: '2.25rem',
-            sm: '2.75rem',
-            md: '3.5rem',
-        },
+    [theme.breakpoints.up('lg')]: {
+        gap: theme.spacing(12),
     },
+}));
 
-    description: {
-        mb: 4,
-
-        color: 'text.secondary',
-
-        lineHeight: 1.6,
-
-        fontSize: {
-            xs: '1.1rem',
-            md: '1.25rem',
-        },
+export const HeroContent = styled(Box)(({ theme }) => ({
+    flex: 1,
+    order: 1,
+    [theme.breakpoints.up('md')]: {
+        maxWidth: 560,
     },
+}));
 
-    actions: {
-        display: 'flex',
+export const HeroTitle = styled(Typography)<TypographyProps>(({ theme }) => ({
+    marginBottom: theme.spacing(3),
+    fontWeight: 600,
+    lineHeight: 1.1,
+    fontSize: '2.25rem',
 
-        flexWrap: 'wrap',
-
-        gap: 2,
+    [theme.breakpoints.up('sm')]: {
+        fontSize: '2.75rem',
     },
-
-    imageWrapper: {
-        flex: 1,
-
-        width: '100%',
-
-        display: 'flex',
-
-        justifyContent: 'center',
-
-        order: {
-            xs: 2,
-            md: 2,
-        },
+    [theme.breakpoints.up('md')]: {
+        fontSize: '3.5rem',
     },
+}));
 
-    image: {
-        width: '100%',
-        height: '500px',
+export const HeroDescription = styled(Typography)(({ theme }) => ({
+    marginBottom: theme.spacing(4),
+    color: theme.palette.text.secondary,
+    lineHeight: 1.6,
+    fontSize: '1.1rem',
 
-        maxWidth: {
-            xs: 450,
-            md: 650,
-        },
-
-        borderRadius: '32px',
-
-        objectFit: 'cover',
-
-        display: 'block',
+    [theme.breakpoints.up('md')]: {
+        fontSize: '1.25rem',
     },
-};
+}));
+
+export const HeroActions = styled(Box)(({ theme }) => ({
+    display: 'flex',
+    flexWrap: 'wrap',
+    gap: theme.spacing(2),
+}));
+
+export const HeroImageWrapper = styled(Box)(() => ({
+    flex: 1,
+    order: 2,
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+}));
+
+export const HeroImage = styled('img')(({ theme }) => ({
+    display: 'block',
+    width: '100%',
+    height: '500px',
+    maxWidth: 450,
+    objectFit: 'cover',
+    borderRadius: '32px',
+
+    [theme.breakpoints.up('md')]: {
+        maxWidth: 650,
+    },
+}));

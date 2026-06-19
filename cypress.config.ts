@@ -15,12 +15,13 @@ export default defineConfig({
     specPattern: 'cypress/e2e/**/*.cy.{js,jsx,ts,tsx}',
   },
 
-component: {
-  specPattern: 'cypress/component/**/*.cy.{js,jsx,ts,tsx}',
-  supportFile: 'cypress/support/component.ts',
-  devServer: {
-    framework: 'react',
-    bundler: 'vite',
+  component: {
+    // UPDATED: Now looks inside your src folder for .cy.tsx files
+    specPattern: 'src/**/*.cy.{js,jsx,ts,tsx}',
+    supportFile: 'cypress/support/component.ts',
+    devServer: {
+      framework: 'react',
+      bundler: 'vite',
+    },
   },
-},
 })
