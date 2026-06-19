@@ -4,6 +4,7 @@ import { render, type RenderOptions } from '@testing-library/react';
 import type { ReactElement } from 'react';
 import { MemoryRouter } from 'react-router';
 import { theme } from '../shared/theme/theme';
+import { ReduxProvider } from '../app/providers/ReduxProvider';
 
 type AppRenderOptions = RenderOptions & {
     route?: string;
@@ -16,8 +17,10 @@ export function renderWithProviders(
     return render(
         <MemoryRouter initialEntries={[route]}>
             <ThemeProvider theme={theme}>
-                <CssBaseline />
-                {ui}
+                <ReduxProvider>
+                    <CssBaseline />
+                    {ui}
+                </ReduxProvider>
             </ThemeProvider>
         </MemoryRouter>,
         renderOptions,

@@ -3,12 +3,15 @@ import { ThemeProvider } from '@mui/material/styles';
 import { RouterProvider } from 'react-router';
 import { router } from '../router/router';
 import { theme } from '../../shared/theme/theme';
+import { ReduxProvider } from './ReduxProvider';
 
 export function AppProviders() {
     return (
         <ThemeProvider theme={theme}>
-            <CssBaseline />
-            <RouterProvider router={router} />
+            <ReduxProvider>
+                <CssBaseline />
+                <RouterProvider router={router} />
+            </ReduxProvider>
         </ThemeProvider>
     );
 }
