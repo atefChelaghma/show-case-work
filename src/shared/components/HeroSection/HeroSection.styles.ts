@@ -1,4 +1,5 @@
 import { styled, Box, Typography } from '@mui/material';
+import { BoxProps } from '@mui/material/Box';
 import { TypographyProps } from '@mui/material/Typography';
 
 export const HeroRoot = styled('section')(({ theme }) => ({
@@ -17,10 +18,7 @@ export const HeroRoot = styled('section')(({ theme }) => ({
 }));
 
 export const HeroLayout = styled(Box)(({ theme }) => ({
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    ...theme.mixins.flexColumnCenter,
     gap: theme.spacing(5),
 
     [theme.breakpoints.up('md')]: {
@@ -42,30 +40,16 @@ export const HeroContent = styled(Box)(({ theme }) => ({
 
 export const HeroTitle = styled(Typography)<TypographyProps>(({ theme }) => ({
     marginBottom: theme.spacing(3),
-    fontWeight: 600,
-    lineHeight: 1.1,
-    fontSize: '2.25rem',
-
-    [theme.breakpoints.up('sm')]: {
-        fontSize: '2.75rem',
-    },
-    [theme.breakpoints.up('md')]: {
-        fontSize: '3.5rem',
-    },
+    ...theme.typography.h1,
 }));
 
 export const HeroDescription = styled(Typography)(({ theme }) => ({
     marginBottom: theme.spacing(4),
     color: theme.palette.text.secondary,
-    lineHeight: 1.6,
-    fontSize: '1.1rem',
-
-    [theme.breakpoints.up('md')]: {
-        fontSize: '1.25rem',
-    },
+    ...theme.typography.subtitle1,
 }));
 
-export const HeroActions = styled(Box)(({ theme }) => ({
+export const HeroActions = styled(Box)<BoxProps>(({ theme }) => ({
     display: 'flex',
     flexWrap: 'wrap',
     gap: theme.spacing(2),

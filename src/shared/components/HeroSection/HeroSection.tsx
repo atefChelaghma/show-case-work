@@ -1,5 +1,5 @@
 import { Container } from '@mui/material';
-import { HeroSectionProps } from './HeroSection.types';
+import { HeroSectionProps } from './index';
 import {
     HeroRoot,
     HeroLayout,
